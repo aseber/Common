@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Hey Angelica!</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- typed custom CSS -->
+        <link href="css/typed.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+        <!-- Made with TypedJS http://www.mattboldt.com/demos/typed-js/ -->
+        <script src="js/jquery.js"></script>
+        <script src="js/typed.js"></script>
+        <script>
+        $(function(){
+            $(".typeText").typed({
+              stringsElement: $('#typed-strings'),
+              typeSpeed: 10,
+              backSpeed: 10,
+            });
+          });
+        </script>
+        <style>
+        .typed-cursor{
+        opacity: 1;
+        -webkit-animation: blink 0.7s infinite;
+        -moz-animation: blink 0.7s infinite;
+        animation: blink 0.7s infinite;
+        }
+        @keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-webkit-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-moz-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+        <header id="top" class="header">
+            <div class="text-vertical-center">
+
+              <!-- Made with typed.js -->
+              <div id="typed-strings">
+                <p>Hello world!</p>
+                <p>How are you doing?</p>
+              </div>
+
+              <div class = "typedElement">
+                <span class="typeText">
+                </span>
+              </div>
+            </div>
+        </header>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
