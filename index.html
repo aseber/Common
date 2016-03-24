@@ -33,6 +33,7 @@
         <script src="js/typed.js"></script>
 
         <script>
+            var gallery;
             window.onload = $(function(){
                 $(".typeText").typed({
                   stringsElement: $('#typed-strings'),
@@ -66,6 +67,7 @@
 
                     showAnimationDuration: 0,
                     hideAnimationDuration: 0,
+                    closeEl:false,
                     fullscreenEl: false,
                     zoomEl: false,
                     shareEl: false,
@@ -75,26 +77,22 @@
                     modal: false,
                     closeOnScroll: false,
 
-                    /*getThumbBoundsFn: function(index) {
-                        // rect was the original bounds
+                    loop: true,
 
-                        var thumbnail = items[index].el.getElementsByTagName('src')[0], // find thumbnail
-                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                        boundingRect = thumbnail.getBoundingClientRect();
-
-                        var rect = {x:boundingRect.left, y:boundingRect.top + pageYScroll, w:boundingRect.width};
-                        var templateBounds = pswpElement.parentElement.getBoundingClientRect();
-                        rect.x -= templateBounds.left;
-                        rect.y -= templateBounds.top;
-
-                    },*/
-
-                    shareButtons: []
+                    escKey: false,
+                    pinchToClose: false,
+                    closeOnScroll: false,
+                    closeOnVerticalDrag: false,
+                    // arrowKeys: false,
 
                 };
 
                 var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
                 gallery.init();
+
+                window.setInterval(function(){
+                    gallery.next();
+                }, 2000);
 
             });
         </script>
@@ -207,6 +205,7 @@
                     <!-- Made with typed.js -->
                   <div id="typed-strings">
                     <p>Hey Angelica!^1000</p>
+                    <p>No spoils!</p>
                     <!--p>I created this website for this very special occasion^150 :)^250</p>
                     <p>I wanted to tell you something very important^250</p>
                     <p>You mean more to me than anything or anyone in the world^250</p>
