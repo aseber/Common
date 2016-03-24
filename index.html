@@ -17,13 +17,14 @@
         <script src="js/jquery.js"></script>
         <script src="js/typed.js"></script>
         <script>
-        window.onload = $(function(){
+        $(document).ready(function(){
             $(".typeText").typed({
               stringsElement: $('#typed-strings'),
               typeSpeed: 10,
               backSpeed: 5,
             });
-          });
+          }
+        )
         </script>
         <style>
         .typed-cursor{
