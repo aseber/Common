@@ -75,12 +75,25 @@ window.onload = $(function(){
         }
     }
 
+
+    var value = window.innerWidth/Math.ceil(window.innerWidth/120);
+
+    var elementsToChange = document.getElementsByClassName("grid-item");
+    for (var integer = 0; integer < elementsToChange.length; integer++) {
+        elementsToChange[integer].style.width = value.toString() + "px";
+    }
+
+    elementsToChange = document.getElementsByClassName("grid-item--width2");
+    for (var integer = 0; integer < elementsToChange.length; integer++) {
+        elementsToChange[integer].style.width = (value*2).toString() + "px";
+    }
+
     var elem = document.querySelector('.grid');
     var msnry = new Masonry( elem, {
       // options
       percentPosition: true,
       itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer'
+      columnWidth: value
     });
 
 });
