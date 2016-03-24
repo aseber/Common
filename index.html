@@ -93,6 +93,7 @@
 
                     escKey: false,
                     pinchToClose: false,
+                    clickToCloseNonZoomable: false,
                     closeOnScroll: false,
                     closeOnVerticalDrag: false,
                     getDoubleTapZoom: function(isMouseClick, item) {}
@@ -117,13 +118,10 @@
                 }
             });
 
-            window.addEventListener("ontouchstart", function(){
-                alert("he");
+            window.addEventListener("touchmove", function(){
+                window.clearInterval(timer);
+                timer = window.setInterval(timedFunction, 20000);
             });
-
-            window.ondrag=function(){
-                alert("der");
-            }
 
         </script>
 
