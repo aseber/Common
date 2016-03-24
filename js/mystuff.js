@@ -57,8 +57,8 @@ function openPhotoSwipe(myIndex) {
 }
 
 function createPhotoScapeTimer() {
-    window.clearInterval(timer);
-    timer = window.setInterval(timedFunction, 2000);
+    // window.clearInterval(timer);
+    // timer = window.setInterval(timedFunction, 2000);
 }
 
 window.onload = $(function(){
