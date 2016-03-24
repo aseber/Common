@@ -31,15 +31,74 @@
         <!-- Made with TypedJS http://www.mattboldt.com/demos/typed-js/ -->
         <script src="js/jquery.js"></script>
         <script src="js/typed.js"></script>
+
         <script>
-        window.onload = $(function(){
-            $(".typeText").typed({
-              stringsElement: $('#typed-strings'),
-              typeSpeed: 10,
-              backSpeed: 5,
+            window.onload = $(function(){
+                $(".typeText").typed({
+                  stringsElement: $('#typed-strings'),
+                  typeSpeed: 10,
+                  backSpeed: 5,
+                });
+
+                var pswpElement = document.querySelectorAll('.pswp')[0];
+
+                // build items array
+                var items = [
+                    {
+                        src: 'img/1.png',
+                        w: 964,
+                        h: 1024
+                    },
+                    {
+                        src: 'img/2.jpg',
+                        w: 1024,
+                        h: 683
+                    }
+                ];
+
+                // define options (if needed)
+                var options = {
+
+                    index: 0,
+
+                    history: false,
+                    focus: false,
+
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                    fullscreenEl: false,
+                    zoomEl: false,
+                    shareEl: false,
+                    counterEl: false,
+                    shareEl: false,
+
+                    modal: false,
+                    closeOnScroll: false,
+
+                    /*getThumbBoundsFn: function(index) {
+                        // rect was the original bounds
+
+                        var thumbnail = items[index].el.getElementsByTagName('src')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        boundingRect = thumbnail.getBoundingClientRect();
+
+                        var rect = {x:boundingRect.left, y:boundingRect.top + pageYScroll, w:boundingRect.width};
+                        var templateBounds = pswpElement.parentElement.getBoundingClientRect();
+                        rect.x -= templateBounds.left;
+                        rect.y -= templateBounds.top;
+
+                    },*/
+
+                    shareButtons: []
+
+                };
+
+                var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery.init();
+
             });
-          });
         </script>
+
         <style>
         .typed-cursor{
         opacity: 1;
@@ -68,23 +127,96 @@
 
     <body>
 
-        <!-- Header -->
-        <header id="top" class="header">
+        <!-- The top bar -->
+        <div id="top" class="header">
+            <!-- Stuff for photoswipe -->
+            <!-- Root element of PhotoSwipe. Must have class pswp. -->
+            <div class="pswp" tabindex="0" role="dialog" aria-hidden="true">
+
+                <!-- Background of PhotoSwipe.
+                     It's a separate element as animating opacity is faster than rgba(). -->
+                <div class="pswp__bg"></div>
+
+                <!-- Slides wrapper with overflow:hidden. -->
+                <div class="pswp__scroll-wrap">
+
+                    <!-- Container that holds slides.
+                        PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                        Don't modify these 3 pswp__item elements, data is added later on. -->
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                    <div class="pswp__ui pswp__ui--hidden">
+
+                        <div class="pswp__top-bar">
+
+                            <!--  Controls are self-explanatory. Order can be changed. -->
+
+                            <div class="pswp__counter"></div>
+
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                            <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                            <!-- element will get class pswp__preloader-active when preloader is running -->
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                  <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                        </button>
+
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                        </button>
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- The bottom bar -->
+        <div id="bottom" class="header">
             <div class="text-vertical-top">
-
-              <!-- Made with typed.js -->
-              <div id="typed-strings">
-                <!--p>Hey!</p-->
-                <p>Hey Angelica!^1000</p>
-                <p>No spoils!</p>
-              </div>
-
               <div class = "typedElement">
                 <span class="typeText">
+                    <!-- Made with typed.js -->
+                  <div id="typed-strings">
+                    <p>Hey Angelica!^1000</p>
+                    <!--p>I created this website for this very special occasion^150 :)^250</p>
+                    <p>I wanted to tell you something very important^250</p>
+                    <p>You mean more to me than anything or anyone in the world^250</p>
+                    <p>I couldn't imagine life without you,^500<br/>nor could I possibly be happier elsewhere^250</p>
+                    <p>Life with you is a constant adventure,^500<br/>and so I wanted to ask you^100.^100.^100.</p-->
+                  </div>
                 </span>
               </div>
             </div>
-        </header>
+        </div>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>

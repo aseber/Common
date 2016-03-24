@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Hey Angelica!</title>
+
+        <!-- Core CSS file -->
+        <link rel="stylesheet" href="css/photoswipe.css">
+
+        <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
+             In the folder of skin CSS file there are also:
+             - .png and .svg icons sprite,
+             - preloader.gif (for browsers that do not support CSS animations) -->
+        <link rel="stylesheet" href="css/default-skin/default-skin.css">
+
+        <!-- Core JS file -->
+        <script src="js/photoswipe.min.js"></script>
+
+        <!-- UI JS file -->
+        <script src="js/photoswipe-ui-default.min.js"></script>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- typed custom CSS -->
+        <link href="css/typed.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/stylish-portfolio.css" rel="stylesheet">
+
+        <!-- Made with TypedJS http://www.mattboldt.com/demos/typed-js/ -->
+        <script src="js/jquery.js"></script>
+        <script src="js/typed.js"></script>
+        <script>
+        window.onload = $(function(){
+            $(".typeText").typed({
+              stringsElement: $('#typed-strings'),
+              typeSpeed: 10,
+              backSpeed: 5,
+            });
+          });
+        </script>
+        <style>
+        .typed-cursor{
+        opacity: 1;
+        -webkit-animation: blink 0.7s infinite;
+        -moz-animation: blink 0.7s infinite;
+        animation: blink 0.7s infinite;
+        }
+        @keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-webkit-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-moz-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+        <header id="top" class="header">
+            <div class="text-vertical-top">
+
+              <!-- Made with typed.js -->
+              <div id="typed-strings">
+                <!--p>Hey!</p-->
+                <p>Hey Angelica!^1000</p>
+                <p>No spoils!</p>
+              </div>
+
+              <div class = "typedElement">
+                <span class="typeText">
+                </span>
+              </div>
+            </div>
+        </header>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>
