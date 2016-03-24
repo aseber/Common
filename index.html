@@ -34,6 +34,8 @@
 
         <script>
             var gallery;
+            var timer;
+            var timedFunction;
             window.onload = $(function(){
                 $(".typeText").typed({
                   stringsElement: $('#typed-strings'),
@@ -52,6 +54,16 @@
                     },
                     {
                         src: 'img/2.jpg',
+                        w: 1024,
+                        h: 683
+                    },
+                    {
+                        src: 'img/3.png',
+                        w: 1024,
+                        h: 683
+                    },
+                    {
+                        src: 'img/4.png',
                         w: 1024,
                         h: 683
                     }
@@ -83,18 +95,36 @@
                     pinchToClose: false,
                     closeOnScroll: false,
                     closeOnVerticalDrag: false,
-                    // arrowKeys: false,
+                    getDoubleTapZoom: function(isMouseClick, item) {}
 
                 };
 
-                var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
                 gallery.init();
 
-                window.setInterval(function(){
+                timedFunction = function(){
                     gallery.next();
-                }, 2000);
+                }
+
+                timer = window.setInterval(timedFunction, 2000);
 
             });
+
+            window.addEventListener("keydown", function(event){
+                if (event.keyCode = 37 || event.keyCode == 39) {
+                    window.clearInterval(timer);
+                    timer = window.setInterval(timedFunction, 2000);
+                }
+            });
+
+            window.addEventListener("ontouchstart", function(){
+                alert("he");
+            });
+
+            window.ondrag=function(){
+                alert("der");
+            }
+
         </script>
 
         <style>
