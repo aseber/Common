@@ -61,19 +61,19 @@ animation: blink 0.7s infinite;
 
 .grid-sizer,
 .grid-item {
-  width: 6.25%;
+  width: 8.33%;
 }
 
 .grid-item {
   float: left;
   background: #000;
-  border: 5px solid #333;
+  border: 3px solid #333;
   border-color: hsla(0, 0%, 25%, 1);
   border-radius: 5px;
 }
 
 .grid-item--width2 {
-    width: 12.5%;
+    width: 16.66%;
 }
 
 #top {

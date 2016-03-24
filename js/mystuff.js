@@ -52,6 +52,8 @@ function openPhotoSwipe(myIndex) {
     gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
     gallery.init();
 
+    createPhotoScapeTimer();
+
 }
 
 function createPhotoScapeTimer() {
@@ -72,8 +74,6 @@ window.onload = $(function(){
             gallery.next();
         }
     }
-
-    createPhotoScapeTimer();
 
     var elem = document.querySelector('.grid');
     var msnry = new Masonry( elem, {
