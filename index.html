@@ -28,126 +28,13 @@
         <!-- Custom CSS -->
         <link href="css/stylish-portfolio.css" rel="stylesheet">
 
+        <script src="js/masonry.pkgd.min.js"></script>
+
         <!-- Made with TypedJS http://www.mattboldt.com/demos/typed-js/ -->
         <script src="js/jquery.js"></script>
         <script src="js/typed.js"></script>
 
-        <script>
-            var gallery;
-            var timer;
-            var timedFunction;
-            window.onload = $(function(){
-                $(".typeText").typed({
-                  stringsElement: $('#typed-strings'),
-                  typeSpeed: 10,
-                  backSpeed: 5,
-                });
-
-                var pswpElement = document.querySelectorAll('.pswp')[0];
-
-                // build items array
-                var items = [
-                    {
-                        src: 'img/1.png',
-                        w: 964,
-                        h: 1024
-                    },
-                    {
-                        src: 'img/2.jpg',
-                        w: 1024,
-                        h: 683
-                    },
-                    {
-                        src: 'img/3.png',
-                        w: 1024,
-                        h: 683
-                    },
-                    {
-                        src: 'img/4.png',
-                        w: 1024,
-                        h: 683
-                    }
-                ];
-
-                // define options (if needed)
-                var options = {
-
-                    index: 0,
-
-                    history: false,
-                    focus: false,
-
-                    showAnimationDuration: 0,
-                    hideAnimationDuration: 0,
-                    closeEl:false,
-                    fullscreenEl: false,
-                    zoomEl: false,
-                    shareEl: false,
-                    counterEl: false,
-                    shareEl: false,
-
-                    modal: false,
-                    closeOnScroll: false,
-
-                    loop: true,
-
-                    escKey: false,
-                    pinchToClose: false,
-                    clickToCloseNonZoomable: false,
-                    closeOnScroll: false,
-                    closeOnVerticalDrag: false,
-                    getDoubleTapZoom: function(isMouseClick, item) {}
-
-                };
-
-                gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-                gallery.init();
-
-                timedFunction = function(){
-                    gallery.next();
-                }
-
-                timer = window.setInterval(timedFunction, 2000);
-
-            });
-
-            window.addEventListener("keydown", function(event){
-                if (event.keyCode = 37 || event.keyCode == 39) {
-                    window.clearInterval(timer);
-                    timer = window.setInterval(timedFunction, 2000);
-                }
-            });
-
-            window.addEventListener("touchmove", function(){
-                window.clearInterval(timer);
-                timer = window.setInterval(timedFunction, 20000);
-            });
-
-        </script>
-
-        <style>
-        .typed-cursor{
-        opacity: 1;
-        -webkit-animation: blink 0.7s infinite;
-        -moz-animation: blink 0.7s infinite;
-        animation: blink 0.7s infinite;
-        }
-        @keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-webkit-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        @-moz-keyframes blink{
-            0% { opacity:1; }
-            50% { opacity:0; }
-            100% { opacity:1; }
-        }
-        </style>
+        <script src="js/mystuff.js"></script>
 
     </head>
 
@@ -223,6 +110,37 @@
 
             </div>
 
+<!--             <div id="masonry-grid" class="grid">
+              <div class="grid-sizer"></div>
+              <div class="grid-item grid-item--width2">
+                  <img src="img\1.jpg" class="grid-img" onclick="openPhotoSwipe(0);"/>
+              </div>
+              <div class="grid-item grid-item--width2">
+                  <img src="img\2.jpg" class="grid-img" onclick="openPhotoSwipe(1);"/>
+              </div>
+              <div class="grid-item grid-item--width2">
+                  <img src="img\3.jpg" class="grid-img" onclick="openPhotoSwipe(2);"/>
+              </div>
+              <div class="grid-item">
+                  <img src="img\4.jpg" class="grid-img" onclick="openPhotoSwipe(3);"/>
+              </div>
+              <div class="grid-item">
+                  <img src="img\5.jpg" class="grid-img" onclick="openPhotoSwipe(4);"/>
+              </div>
+              <div class="grid-item">
+                  <img src="img\6.jpg" class="grid-img" onclick="openPhotoSwipe(5);"/>
+              </div>
+              <div class="grid-item">
+                  <img src="img\7.png" class="grid-img" onclick="openPhotoSwipe(6);"/>
+              </div>
+              <div class="grid-item grid-item--width2">
+                  <img src="img\8.jpg" class="grid-img" onclick="openPhotoSwipe(7);"/>
+              </div>
+              <div class="grid-item">
+                  <img src="img\9.jpg" class="grid-img" onclick="openPhotoSwipe(8);"/>
+              </div>
+            </div> -->
+
         </div>
 
         <!-- The bottom bar -->
@@ -233,7 +151,9 @@
                     <!-- Made with typed.js -->
                   <div id="typed-strings">
                     <p>Hey Angelica!^1000</p>
-                    <p>No spoils!</p>
+                    <p>No spoils!^10000</p>
+                    <p>You're still here?^2000.^100.^100.^100.</p>
+                    <p>Okay,^250 fine. I love you Angelica!</p>
                     <!--p>I created this website for this very special occasion^150 :)^250</p>
                     <p>I wanted to tell you something very important^250</p>
                     <p>You mean more to me than anything or anyone in the world^250</p>

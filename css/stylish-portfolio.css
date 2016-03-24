@@ -22,7 +22,62 @@ body {
     vertical-align: middle;
 }
 
+.grid {
+    width: 100%;
+    background: #000;
+}
+
+.grid-img {
+    image-orientation: from-image;
+    width: 100%;
+    height: auto;
+}
+
+.grid-img:hover {
+    opacity: 0.5;
+}
+
+.typed-cursor{
+opacity: 1;
+-webkit-animation: blink 0.7s infinite;
+-moz-animation: blink 0.7s infinite;
+animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.grid-sizer,
+.grid-item {
+  width: 6.25%;
+}
+
+.grid-item {
+  float: left;
+  background: #000;
+  border: 5px solid #333;
+  border-color: hsla(0, 0%, 25%, 1);
+  border-radius: 5px;
+}
+
+.grid-item--width2 {
+    width: 12.5%;
+}
+
 #top {
+    background-color: black;
     position: fixed;
     left: 0;
     right: 0;
