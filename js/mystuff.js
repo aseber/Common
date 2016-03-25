@@ -56,6 +56,13 @@ function openPhotoSwipe(myIndex) {
 
 }
 
+$.get( 'img/1.jpg', function( content ) {
+  // wrap content in jQuery object
+  var $content = $( content );
+  // add jQuery object
+  $grid.append( $content ).masonry( 'appended', $content );
+});
+
 function createPhotoScapeTimer() {
     // window.clearInterval(timer);
     // timer = window.setInterval(timedFunction, 2000);
