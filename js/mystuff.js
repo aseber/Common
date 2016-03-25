@@ -1,6 +1,60 @@
 var gallery;
-var timer;
-var timedFunction;
+var msnry;
+var columnWidth = window.innerWidth/Math.ceil(window.innerWidth/120);
+var imageClasses =
+[
+{imgPath: "img\\1.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\2.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\3.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\4.jpg", classString: "grid-item"},
+// {imgPath: "img\\5.jpg", classString: "grid-item"},
+// {imgPath: "img\\6.jpg", classString: "grid-item"},
+// {imgPath: "img\\7.jpg", classString: "grid-item"},
+// {imgPath: "img\\8.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\9.jpg", classString: "grid-item"},
+// {imgPath: "img\\10.jpg", classString: "grid-item"},
+// {imgPath: "img\\11.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\12.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\13.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\14.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\15.jpg", classString: "grid-item"},
+// {imgPath: "img\\16.jpg", classString: "grid-item"},
+// {imgPath: "img\\17.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\18.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\19.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\20.jpg", classString: "grid-item"},
+// {imgPath: "img\\21.jpg", classString: "grid-item"},
+// {imgPath: "img\\22.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\23.jpg", classString: "grid-item"},
+// {imgPath: "img\\24.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\25.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\26.jpg", classString: "grid-item"},
+// {imgPath: "img\\27.jpg", classString: "grid-item"},
+// {imgPath: "img\\28.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\29.jpg", classString: "grid-item"},
+// {imgPath: "img\\30.jpg", classString: "grid-item"},
+// {imgPath: "img\\31.jpg", classString: "grid-item grid-item--width2"},
+// {imgPath: "img\\32.jpg", classString: "grid-item"},
+// {imgPath: "img\\33.jpg", classString: "grid-item"},
+// {imgPath: "img\\34.jpg", classString: "grid-item"},
+// {imgPath: "img\\35.jpg", classString: "grid-item"},
+// {imgPath: "img\\36.jpg", classString: "grid-item"},
+// {imgPath: "img\\37.jpg", classString: "grid-item"},
+// {imgPath: "img\\38.jpg", classString: "grid-item"},
+// {imgPath: "img\\39.jpg", classString: "grid-item"},
+// {imgPath: "img\\40.jpg", classString: "grid-item"},
+// {imgPath: "img\\41.jpg", classString: "grid-item"},
+// {imgPath: "img\\42.jpg", classString: "grid-item"},
+// {imgPath: "img\\43.jpg", classString: "grid-item"},
+// {imgPath: "img\\44.jpg", classString: "grid-item"},
+// {imgPath: "img\\45.jpg", classString: "grid-item"},
+// {imgPath: "img\\46.jpg", classString: "grid-item"},
+// {imgPath: "img\\47.jpg", classString: "grid-item"},
+// {imgPath: "img\\48.jpg", classString: "grid-item"},
+// {imgPath: "img\\49.jpg", classString: "grid-item"}
+];
+
+var photoSwapNum = 0;
 
 function openPhotoSwipe(myIndex) {
 
@@ -52,23 +106,51 @@ function openPhotoSwipe(myIndex) {
     gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
     gallery.init();
 
-    createPhotoScapeTimer();
+}
+
+function loadImages() {
+
+    var images = [];
+
+    for (var i = 0; i < imageClasses.length; i++) {
+
+        images[i] = new Image();
+        images[i].classString = imageClasses[i].classString;
+        images[i].onload = function() {
+
+            // create the div for the item.
+            var element = document.createElement("div");
+            element.className = this.classString;
+
+            if (this.classString == "grid-item") {
+
+                element.style.width = columnWidth.toString() + "px";
+
+            } else {
+
+                element.style.width = (columnWidth*2).toString() + "px";
+
+            }
+
+            document.getElementById("masonry-grid").appendChild(element);
+
+            // create the image
+            var image = document.createElement("img");
+            image.setAttribute("src", this.src);
+            image.className = "grid-img";
+            image.setAttribute("onclick", "openPhotoSwipe(" + photoSwapNum + ");");
+            element.appendChild(image);
+            photoSwapNum++;
+
+            msnry.appended(element);
+
+        }
+        images[i].src = imageClasses[i].imgPath;
+    }
 
 }
 
-$.get( 'img/1.jpg', function( content ) {
-  // wrap content in jQuery object
-  var $content = $( content );
-  // add jQuery object
-  $grid.append( $content ).masonry( 'appended', $content );
-});
-
-function createPhotoScapeTimer() {
-    // window.clearInterval(timer);
-    // timer = window.setInterval(timedFunction, 2000);
-}
-
-window.onload = $(function(){
+function startTyping() {
 
     $(".typeText").typed({
       stringsElement: $('#typed-strings'),
@@ -76,41 +158,25 @@ window.onload = $(function(){
       backSpeed: 5,
     });
 
-    timedFunction = function(){
-        if (gallery != null) {
-            gallery.next();
-        }
-    }
+}
 
-
-    var value = window.innerWidth/Math.ceil(window.innerWidth/120);
-
-    var elementsToChange = document.getElementsByClassName("grid-item");
-    for (var integer = 0; integer < elementsToChange.length; integer++) {
-        elementsToChange[integer].style.width = value.toString() + "px";
-    }
-
-    elementsToChange = document.getElementsByClassName("grid-item--width2");
-    for (var integer = 0; integer < elementsToChange.length; integer++) {
-        elementsToChange[integer].style.width = (value*2).toString() + "px";
-    }
+function generateMasonryTiles() {
 
     var elem = document.querySelector('.grid');
-    var msnry = new Masonry( elem, {
+    msnry = new Masonry( elem, {
       // options
       percentPosition: true,
       itemSelector: '.grid-item',
-      columnWidth: value
+      columnWidth: columnWidth
     });
 
-});
+    loadImages();
 
-window.addEventListener("keydown", function(event){
-    if (event.keyCode = 37 || event.keyCode == 39) {
-        createPhotoScapeTimer();
-    }
-});
+}
 
-window.addEventListener("touchmove", function(){
-    createPhotoScapeTimer();
+window.onload = $(function(){
+
+    generateMasonryTiles();
+    startTyping();
+
 });
